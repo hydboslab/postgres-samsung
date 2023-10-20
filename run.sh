@@ -44,7 +44,7 @@ CREATE_DB_SQL="${SCRIPT_DIR}/sql/create_db.sql"
 # DB Config
 USER=$(whoami)
 DATABASE=${USER}
-PORT=5678 # If you change the port, you must change the postgresql.conf file in config directory
+PORT=5432 # If you change the port, you must change the postgresql.conf file in config directory
 
 # Parse parameters
 for i in "$@"
