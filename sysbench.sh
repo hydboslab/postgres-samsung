@@ -1,4 +1,17 @@
 #!/bin/bash
+if [[ "$1" == "-h" ]]; then
+  echo "Usage: `basename $0` [options]"
+  echo "Options:"
+  echo "  --cleanup   cleanup sysbench"
+  echo "  --prepare   prepare sysbench"
+  echo "  --run       run sysbench"
+  exit 0
+fi
+
+
+
+
+
 
 # ------------------------------------------------------------------------------
 USER=sbtest
@@ -60,14 +73,25 @@ LUA="oltp_read_write.lua"
 
 
 
-if [[ "$1" == "-h" ]]; then
-  echo "Usage: `basename $0` [options]"
-  echo "Options:"
-  echo "  --cleanup   cleanup sysbench"
-  echo "  --prepare   prepare sysbench"
-  echo "  --run       run sysbench"
-  exit 0
-fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Parse parameters
 for i in "$@"
