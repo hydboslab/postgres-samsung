@@ -26,14 +26,12 @@ TABLES=1
 
 THREADS=1
 TIME=60
-WARMUP_TIME=0
 REPORT_INTERVAL=1
 
 SECONDARY=off
 CREATE_SECONDARY=false
 
 RAND_TYPE=uniform
-RAND_ZIPFIAN_EXP=0.8
 
 LUA="oltp_read_write.lua"
 # ------------------------------------------------------------------------------
@@ -138,9 +136,7 @@ then
       --report-interval=${REPORT_INTERVAL} \
       --secondary=${SECONDARY} \
       --create-secondary=${CREATE_SECONDARY} \
-      --warmup-time=${WARMUP_TIME} \
       --rand-type=${RAND_TYPE} \
-      --rand-zipfian-exp=${RAND_ZIPFIAN_EXP} \
       "/usr/share/sysbench/${LUA}" \
       cleanup
 fi
@@ -161,9 +157,7 @@ then
       --report-interval=${REPORT_INTERVAL} \
       --secondary=${SECONDARY} \
       --create-secondary=${CREATE_SECONDARY} \
-      --warmup-time=${WARMUP_TIME} \
       --rand-type=${RAND_TYPE} \
-      --rand-zipfian-exp=${RAND_ZIPFIAN_EXP} \
       "/usr/share/sysbench/${LUA}" \
       prepare
 fi
@@ -184,9 +178,7 @@ then
       --report-interval=${REPORT_INTERVAL} \
       --secondary=${SECONDARY} \
       --create-secondary=${CREATE_SECONDARY} \
-      --warmup-time=${WARMUP_TIME} \
       --rand-type=${RAND_TYPE} \
-      --rand-zipfian-exp=${RAND_ZIPFIAN_EXP} \
       "/usr/share/sysbench/${LUA}" \
       run
 fi
