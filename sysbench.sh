@@ -30,13 +30,13 @@ TABLES=1
 # Secondary index
 CREATE_SECONDARY=false
 
-# Running config
+# Test config
 THREADS=1
 TIME=60
 REPORT_INTERVAL=1
 RAND_TYPE=uniform
 
-# Running type
+# Test type
 LUA="oltp_read_write.lua"
 # ------------------------------------------------------------------------------
 
