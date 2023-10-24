@@ -14,25 +14,29 @@ fi
 
 
 # ------------------------------------------------------------------------------
+# User, DB
 USER=sbtest
-DATABASE=sbtest
 PASSWORD=sbtest
+DATABASE=sbtest
 
+# Connection
 HOST=localhost
-PORT=5678 # If you change the port, you must change the postgresql.conf file in config directory
+PORT=5678
 
+# Size of data
 TABLE_SIZE=10000
 TABLES=1
 
+# Secondary index
+CREATE_SECONDARY=false
+
+# Running config
 THREADS=1
 TIME=60
 REPORT_INTERVAL=1
-
-SECONDARY=off
-CREATE_SECONDARY=false
-
 RAND_TYPE=uniform
 
+# Running type
 LUA="oltp_read_write.lua"
 # ------------------------------------------------------------------------------
 
@@ -134,7 +138,6 @@ then
       --time=${TIME} \
       --threads=${THREADS} \
       --report-interval=${REPORT_INTERVAL} \
-      --secondary=${SECONDARY} \
       --create-secondary=${CREATE_SECONDARY} \
       --rand-type=${RAND_TYPE} \
       "/usr/share/sysbench/${LUA}" \
@@ -155,7 +158,6 @@ then
       --time=${TIME} \
       --threads=${THREADS} \
       --report-interval=${REPORT_INTERVAL} \
-      --secondary=${SECONDARY} \
       --create-secondary=${CREATE_SECONDARY} \
       --rand-type=${RAND_TYPE} \
       "/usr/share/sysbench/${LUA}" \
@@ -176,7 +178,6 @@ then
       --time=${TIME} \
       --threads=${THREADS} \
       --report-interval=${REPORT_INTERVAL} \
-      --secondary=${SECONDARY} \
       --create-secondary=${CREATE_SECONDARY} \
       --rand-type=${RAND_TYPE} \
       "/usr/share/sysbench/${LUA}" \
