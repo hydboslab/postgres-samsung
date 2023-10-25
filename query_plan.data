@@ -1,0 +1,20 @@
+Aggregate  (cost=19377.71..19377.72 rows=1 width=8)
+  ->  Merge Join  (cost=18521.76..19287.61 rows=9010 width=16)
+        Merge Cond: (sbtest1.id = sbtest10.id)
+        ->  Merge Join  (cost=13558.74..14076.82 rows=9010 width=24)
+              Merge Cond: (sbtest1.id = sbtest8.id)
+              ->  Merge Join  (cost=8595.73..8866.03 rows=9010 width=16)
+                    Merge Cond: (sbtest1.id = sbtest5.id)
+                    ->  Sort  (cost=3632.71..3655.24 rows=9010 width=8)
+                          Sort Key: sbtest1.id
+                          ->  Seq Scan on sbtest1  (cost=0.00..3040.88 rows=9010 width=8)
+                                Filter: (k <= 10000)
+                    ->  Sort  (cost=4963.02..5030.59 rows=27030 width=8)
+                          Sort Key: sbtest5.id
+                          ->  Seq Scan on sbtest5  (cost=0.00..2973.30 rows=27030 width=8)
+              ->  Sort  (cost=4963.02..5030.59 rows=27030 width=8)
+                    Sort Key: sbtest8.id
+                    ->  Seq Scan on sbtest8  (cost=0.00..2973.30 rows=27030 width=8)
+        ->  Sort  (cost=4963.02..5030.59 rows=27030 width=8)
+              Sort Key: sbtest10.id
+              ->  Seq Scan on sbtest10  (cost=0.00..2973.30 rows=27030 width=8)

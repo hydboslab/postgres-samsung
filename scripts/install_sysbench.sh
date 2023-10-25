@@ -17,7 +17,7 @@ done
 
 cd ${SYSBENCH_BASE_DIR}
 
-sudo apt-get install -y autoconf libtool libpq-dev
+sudo apt-get install -y autoconf libtool libpq-dev gnuplot
 
 make clean -j4 --silent
 

@@ -362,7 +362,7 @@ def run_exp(args, mode):
     tps_file = os.path.join(result_dir, 'tps.data')
     space_file = os.path.join(result_dir, 'space.data')
     temp_file = os.path.join(result_dir, 'tempfile.data')
-    eps_file = os.path.join(result_dir, 'result.eps')
+    png_file = os.path.join(result_dir, 'result.png')
     gpi_file = os.path.join(script_dir, 'sysbench.gpi')
     postmaster_pid_file = os.path.join(data_dir, 'postmaster.pid')
 
@@ -484,7 +484,7 @@ def run_exp(args, mode):
 
     # Plot using the result files
     params = ['--gpi={}'.format(gpi_file),
-              '--eps-file={}'.format(eps_file),
+              '--png-file={}'.format(png_file),
               '--latency-short-file={}'.format(short_client[0].result_file),
               '--latency-long-file={}'.format(long_client[0].result_file),
               '--temp-file={}'.format(temp_file),
@@ -522,7 +522,7 @@ if __name__ == '__main__':
     sysbc_parser.add_argument('--report-interval', default=1, help='report interval. default 1 second')
     sysbc_parser.add_argument('--secondary', default='off', help='default off')
     sysbc_parser.add_argument('--create-secondary', default='false', help='default = false')
-    sysbc_parser.add_argument('--time', type=int, default=60, help='total execution time')
+    sysbc_parser.add_argument('--time', type=int, default=10, help='total execution time')
     sysbc_parser.add_argument('--threads', type=int, default=4, help='number of threads')
     sysbc_parser.add_argument('--tables', type=int, default=12, help='number of tables')
     sysbc_parser.add_argument('--join-tables', type=int, default=4, help='number of tables to join for each query')
