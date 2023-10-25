@@ -77,13 +77,14 @@ plot TPS_FILE using ($0):($1/1000) with lines ls 2 title "TPS"
 #set ylabel "Temp (GiB)" rotate parallel offset 0,0
 set ylabel "Temp (MiB)" rotate parallel offset 1,0
 #set yrange [0.1:20]
-set yrange [0.1:39]
+set yrange [0.1:99]
 unset ytics
 #set y2range [0.1:20]
-set y2range [0.1:39]
+set y2range [0.1:99]
 #set y2tics 8
-set y2tics 20 offset -1,0
-#plot TEMP_FILE using 1:($2/1024/1024/1024):(0) with filledcurves ls 7 title "Temp Spill"
+set y2tics 50 offset -1,0
+#plot TEMP_FILE using 1:($2/1024/1024/1024):(0) with filledcurves ls 7 title "Temp Spill" 
+set title offset -5, 0
 plot TEMP_FILE using 1:($2/1024/1024):(0) with filledcurves ls 7 title "Temp Spill"
 
 # xlabel no the bottom

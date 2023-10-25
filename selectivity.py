@@ -32,7 +32,7 @@ def run_script(script, params, desc, stdout=subprocess.DEVNULL, stderr=subproces
     log('{} finished!'.format(desc))
 
 def create_config_file(config_file, new_config_file, args):
-    replacers = [['port = 5432', 'port = {}'.format(args.pgsql_port)]]
+    replacers = [['port = 5678', 'port = {}'.format(args.pgsql_port)]]
 
     # After init server, the config file is copied into the data directory
     with open(new_config_file, 'w') as new_config:
@@ -135,9 +135,11 @@ class Client(threading.Thread):
     def run(self):
         self.db.autocommit = self.autocommit
 
+        # TODO: Please update the method used to join, and then verify the output.
         self.cursor.execute('SET enable_mergejoin = on;')
         self.cursor.execute('SET enable_nestloop = off;')
         self.cursor.execute('SET enable_hashjoin = off;')
+        
         #self.cursor.execute('SET enable_bitmapscan = off;')
         #self.cursor.execute('SET enable_indexscan = off;')
         #self.cursor.execute('SET enable_indexonlyscan = off;')
@@ -522,11 +524,11 @@ if __name__ == '__main__':
     sysbc_parser.add_argument('--report-interval', default=1, help='report interval. default 1 second')
     sysbc_parser.add_argument('--secondary', default='off', help='default off')
     sysbc_parser.add_argument('--create-secondary', default='false', help='default = false')
-    sysbc_parser.add_argument('--time', type=int, default=10, help='total execution time')
+    sysbc_parser.add_argument('--time', type=int, default=60, help='total execution time')
     sysbc_parser.add_argument('--threads', type=int, default=4, help='number of threads')
     sysbc_parser.add_argument('--tables', type=int, default=12, help='number of tables')
     sysbc_parser.add_argument('--join-tables', type=int, default=4, help='number of tables to join for each query')
-    sysbc_parser.add_argument('--table-size', type=int, default=100000, help='sysbench table size')
+    sysbc_parser.add_argument('--table-size', type=int, default=200000, help='sysbench table size')
     sysbc_parser.add_argument('--warmup-time', type=int, default=0, help='sysbench warmup time')
     sysbc_parser.add_argument('--rand-type', default='zipfian')
     sysbc_parser.add_argument('--rand-zipfian-exp', default='0.0')
