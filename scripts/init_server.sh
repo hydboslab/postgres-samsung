@@ -19,7 +19,7 @@ do
       shift
       ;;
 
-    --configfile=*)
+    --config-file=*)
       CONFIGFILE="${i#*=}"
       shift
       ;;

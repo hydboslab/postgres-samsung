@@ -82,6 +82,7 @@ class SysbenchWorker(threading.Thread):
         lua_file = os.path.join(src_dir, 'lua', args.lua)
 
         self.params = ['--src-dir={}'.format(src_dir),
+                       '--sysbench-dir={}'.format(self.sysbench_dir),  
                        '--lua={}'.format(lua_file)]
         self.params.extend(self.options)
 
@@ -513,15 +514,15 @@ if __name__ == '__main__':
     # PostgreSQL
     pgsql_parser.add_argument('--pgsql-host', default='localhost', help='pgsql host')
     pgsql_parser.add_argument('--pgsql-db', default='sbtest', help='pgsql database')
-    pgsql_parser.add_argument('--pgsql-user', default='sbtest', help='pgsql user')
-    pgsql_parser.add_argument('--pgsql-port', default='5256', help='pgsql port number')
+    pgsql_parser.add_argument('--pgsql-user', default='sdb', help='pgsql user')
+    pgsql_parser.add_argument('--pgsql-port', default='5678', help='pgsql port number')
 
     # Sysbench
     sysbc_parser.add_argument('--install-sysbench', default=False, action='store_true', help='intall sysbench?')
     sysbc_parser.add_argument('--report-interval', default=1, help='report interval. default 1 second')
     sysbc_parser.add_argument('--secondary', default='off', help='default off')
     sysbc_parser.add_argument('--create-secondary', default='false', help='default = false')
-    sysbc_parser.add_argument('--time', type=int, default=300, help='total execution time')
+    sysbc_parser.add_argument('--time', type=int, default=60, help='total execution time')
     sysbc_parser.add_argument('--threads', type=int, default=4, help='number of threads')
     sysbc_parser.add_argument('--tables', type=int, default=12, help='number of tables')
     sysbc_parser.add_argument('--join-tables', type=int, default=4, help='number of tables to join for each query')

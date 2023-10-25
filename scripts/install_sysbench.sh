@@ -17,6 +17,8 @@ done
 
 cd ${SYSBENCH_BASE_DIR}
 
+sudo apt-get install -y autoconf libtool libpq-dev
+
 make clean -j4 --silent
 
 ./autogen.sh
