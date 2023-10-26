@@ -3,3 +3,4 @@ data
 logfile
 results
 selectivity
+sysbench.sh
