@@ -319,7 +319,7 @@ class TempChecker(threading.Thread):
                 current_time = time.perf_counter()
 
                 try:
-                    data_size = int(str(subprocess.check_output([f'du -sb {self.data_dir}/base/pgsql_tmp'], shell=True).decode('utf-8')).split()[0])
+                    data_size = int(str(subprocess.check_output([f'du -sb {self.data_dir}/base/pgsql_tmp'], shell=True, stderr='/etc/dev/null').decode('utf-8')).split()[0])
                 except:
                     data_size = 0
 
@@ -456,7 +456,14 @@ def run_exp(args, mode):
         client.start()
     for client in long_client:
         client.start()
-    time.sleep(both_time)
+        
+    current_sleep_time = 0
+    while current_sleep_time < both_time:
+        current_sleep_time += (both_time / 6)
+        time.sleep(both_time / 6)
+        
+        if current_sleep_time != both_time:
+            log(f'Running... (elapsed time: {int(current_sleep_time)} sec)')
 
     log('<Phase 3> Run OLAP only ({} sec)'.format(args.time_olap_only))
     time.sleep(args.time_olap_only)
