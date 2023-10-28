@@ -203,6 +203,12 @@ fi
 # Run Sysbench
 if [[ "${RUN}" == "YES" ]]
 then
+    echo "RAND_TYPE         = ${RAND_TYPE}"
+    if [[ "${RAND_TYPE}" == "zipfian" ]]
+    then
+      echo "RAND_ZIPFIAN_EXP  = ${RAND_ZIPFIAN_EXP}"
+    fi
+
     ./src/sysbench \
       --db-driver=pgsql \
       --pgsql-user=${USER} \
