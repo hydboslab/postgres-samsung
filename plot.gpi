@@ -18,8 +18,8 @@ set ylabel "TPS (x10^3)"
 
 set xrange [0:60]
 
-set yrange [0:80]
-set ytics 20
+set yrange [0:50]
+set ytics 10
 
 plot TPS_FILE using ($1/1000) with lines ls 2 title "TPS", \
      ERR_FILE using ($1/1000) with lines ls 3 title "err/s"
