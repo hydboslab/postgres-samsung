@@ -18,7 +18,7 @@ cmake -GNinja \
 -DNOISEPAGE_BUILD_TESTS=ON \
 -DNOISEPAGE_UNITTEST_OUTPUT_ON_FAILURE=ON ..
 
-cd ../postgres-samsung
+cd ../../postgres-samsung
 
 # commands:
 # ninja noisepage
